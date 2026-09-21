@@ -17,14 +17,7 @@ para mostrar hasta 20 películas de romance populares.
 2. Ve a **Configuración → API**: https://www.themoviedb.org/settings/api
 3. Solicita una API key tipo **Developer** (marca "uso personal / estudiante").
 4. Copia el **"API Read Access Token"** (el token largo que empieza con `eyJ...`, NO la "API Key" corta de 32 caracteres).
-5. Pégalo en el archivo `config.js`:
-
-```js
-const TMDB_CONFIG = {
-  ACCESS_TOKEN: "PEGA_AQUI_TU_API_READ_ACCESS_TOKEN",
-  ...
-};
-```
+5. Pégalo en la constante `ACCESS_TOKEN` de `api.js`.
 
 ## Cómo correr el proyecto
 
@@ -47,8 +40,7 @@ Luego visita `http://localhost:8000`.
 romance-series-app/
 ├── index.html    # estructura de la página
 ├── style.css     # estilos (tema romance, responsive)
-├── config.js     # configuración de la API key de TMDB (exporta TMDB_CONFIG)
-├── api.js        # consumos a la API de TMDB (fetch al catálogo)
+├── api.js        # consumos a la API de TMDB (fetch al catálogo, config hardcodeada)
 ├── script.js     # lógica de la interfaz: render, favoritos, eventos
 └── README.md
 ```
