@@ -1,7 +1,6 @@
 // Romance TV — 20 películas y series de romance favoritas.
 
-import { getConfig } from "./env.js";
-import { FAVORITES, fetchDetails } from "./api.js";
+import { fetchRomanceMovies, IMAGE_BASE } from "./api.js";
 
 const statusArea = document.getElementById("status-area");
 const grid = document.getElementById("results-grid");
@@ -9,10 +8,8 @@ const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("modal-close");
 
-async function posterUrl(path) {
-  if (!path) return null;
-  const config = await getConfig();
-  return config.IMAGE_BASE + path;
+function posterUrl(path) {
+  return path ? IMAGE_BASE + path : null;
 }
 
 function escapeHtml(text) {
@@ -32,9 +29,9 @@ function shortOverview(text) {
 
 async function cardData(item) {
   return {
-    title: escapeHtml(item.title || item.name),
+    title: escapeHtml(item.title),
     poster: await posterUrl(item.poster_path),
-    year: getYear(item.release_date || item.first_air_date),
+    year: getYear(item.release_date),
   };
 }
 
@@ -83,12 +80,13 @@ modalOverlay.addEventListener("click", (event) => {
   if (event.target === modalOverlay) modalOverlay.hidden = true;
 });
 
-async function loadFavorites() {
-  setStatus("loading", "Cargando tus favoritas...");
+async function loadRomanceMovies() {
+  setStatus("loading", "Cargando tus peliculas...");
   grid.innerHTML = "";
 
   try {
-    const items = await Promise.all(FAVORITES.map((fav) => fetchDetails(fav)));
+
+    const items = await fetchRomanceMovies();
 
     setStatus(null);
     for (const item of items) {
@@ -99,4 +97,4 @@ async function loadFavorites() {
   }
 }
 
-loadFavorites();
+loadRomanceMovies();
