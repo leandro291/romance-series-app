@@ -9,6 +9,7 @@ const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("modal-close");
 const searchInput = document.getElementById("search-input");
 const loadMoreButton = document.getElementById("load-more");
+const finMessage = document.getElementById("fin");
 
 let allItems = [];
 let currentPage = 1;
@@ -86,8 +87,29 @@ modalOverlay.addEventListener("click", (event) => {
   if (event.target === modalOverlay) modalOverlay.hidden = true;
 });
 
+function renderCounts(shown) {
+  const loaded = allItems.length;
+  document.getElementById("shown-count").textContent = shown;
+  document.getElementById("loaded-count").textContent = loaded;
+  document.getElementById("search-count").textContent = loaded;
+  document.getElementById("page-info").textContent = `Página ${currentPage} de ${totalPages} · 20 por página`;
+  document.getElementById("header-count").textContent = `${loaded} películas cargadas · página ${currentPage} de ${totalPages}`;
+}
+
 async function renderGrid(items) {
   grid.innerHTML = "";
+  renderCounts(items.length);
+
+  const query = searchInput.value.trim();
+  if (query && items.length === 0) {
+    grid.innerHTML = `
+      <div class="vacio">
+        <h3>Ninguna coincidencia para «${escapeHtml(query)}»</h3>
+        <p>Buscamos entre las ${allItems.length} películas cargadas. Probá con otro título o cargá la página siguiente.</p>
+      </div>`;
+    return;
+  }
+
   for (const item of items) {
     grid.appendChild(await createCard(item));
   }
@@ -108,6 +130,7 @@ async function loadPage(page) {
   totalPages = total;
   allItems = [...allItems, ...results]
   loadMoreButton.hidden = currentPage >= totalPages;
+  finMessage.hidden = currentPage < totalPages;
   loadMoreButton.disabled = false;
 }
 
