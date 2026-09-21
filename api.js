@@ -1,18 +1,21 @@
 // Todo lo que habla con la API de TMDB vive aquí.
 
-import { TMDB_CONFIG } from "./config.js";
+import { getConfig } from "./env.js";
 
 async function tmdbFetch(path) {
-  const url = new URL(TMDB_CONFIG.BASE_URL + path);
-  url.searchParams.set("language", TMDB_CONFIG.LANGUAGE);
-  url.searchParams.set("api_key", TMDB_CONFIG.API_KEY);
+  const config = await getConfig();
+  const url = new URL(config.BASE_URL + path);
+  url.searchParams.set("language", config.LANGUAGE);
 
   const response = await fetch(url, {
-    headers: { accept: "application/json" },
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer " + config.ACCESS_TOKEN,
+    },
   });
 
   if (!response.ok) {
-    if (response.status === 401) throw new Error("API key inválida. Revisa config.js.");
+    if (response.status === 401) throw new Error("Access token inválido. Revisá .env.");
     throw new Error("Error de la API (" + response.status + ").");
   }
 
