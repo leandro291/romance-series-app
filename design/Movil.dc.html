@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>RomanceTV — Móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,600;1,700&amp;family=Parisienne&amp;family=Jost:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a0a12;font-family:"Jost",system-ui,sans-serif;color:#fdf4f0}
+a{color:#ff8fb8}a:hover{color:#ffd1e2}
+.serif{font-family:"Playfair Display",Georgia,serif}
+.script{font-family:"Parisienne",cursive;font-weight:400}
+@keyframes latido{0%,100%{transform:scale(1)}12%{transform:scale(1.18)}24%{transform:scale(.96)}36%{transform:scale(1.1)}50%{transform:scale(1)}}
+.beat{animation:latido 2.6s ease-in-out infinite;transform-origin:50% 60%}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+/* árbol de cerezo */
+.tree{position:absolute;perspective:600px}
+.node{position:absolute}
+.sway{position:absolute;left:0;top:0;transform-origin:0 0;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+@keyframes sw0{0%,100%{transform:rotate(-0.50deg)}22%{transform:rotate(0.30deg)}38%{transform:rotate(-0.10deg)}60%{transform:rotate(0.50deg)}80%{transform:rotate(-0.20deg)}}.sw0{animation-name:sw0}
+@keyframes sw1{0%,100%{transform:rotate(-1.10deg)}22%{transform:rotate(0.66deg)}38%{transform:rotate(-0.22deg)}60%{transform:rotate(1.10deg)}80%{transform:rotate(-0.44deg)}}.sw1{animation-name:sw1}
+@keyframes sw2{0%,100%{transform:rotate(-1.80deg)}22%{transform:rotate(1.08deg)}38%{transform:rotate(-0.36deg)}60%{transform:rotate(1.80deg)}80%{transform:rotate(-0.72deg)}}.sw2{animation-name:sw2}
+@keyframes sw3{0%,100%{transform:rotate(-2.60deg)}22%{transform:rotate(1.56deg)}38%{transform:rotate(-0.52deg)}60%{transform:rotate(2.60deg)}80%{transform:rotate(-1.04deg)}}.sw3{animation-name:sw3}
+@keyframes sw4{0%,100%{transform:rotate(-3.40deg)}22%{transform:rotate(2.04deg)}38%{transform:rotate(-0.68deg)}60%{transform:rotate(3.40deg)}80%{transform:rotate(-1.36deg)}}.sw4{animation-name:sw4}
+@keyframes sw5{0%,100%{transform:rotate(-4.30deg)}22%{transform:rotate(2.58deg)}38%{transform:rotate(-0.86deg)}60%{transform:rotate(4.30deg)}80%{transform:rotate(-1.72deg)}}.sw5{animation-name:sw5}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bar{position:absolute;transform-origin:0 50%;background:linear-gradient(180deg,#a67663 0%,#724a3a 38%,#4a2d22 72%,#2a1712 100%);animation:grow cubic-bezier(.35,0,.25,1) both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.knot{position:absolute;border-radius:50%;background:radial-gradient(circle at 38% 32%,#8f624e,#4a2d22 70%);animation:fadein .5s ease both}
+@keyframes bud{0%{transform:scale(0);opacity:0}35%{transform:scale(1);opacity:1}75%{transform:scale(1.15);opacity:1}100%{transform:scale(1.5);opacity:0}}
+.fl{position:absolute}
+.bud{position:absolute;left:32%;top:28%;width:36%;height:44%;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;background:radial-gradient(circle at 40% 30%,#ffa8c8,#c2255c);opacity:0;animation:bud 1.3s ease-out both}
+@keyframes open{0%{transform:scale(0) rotate(-160deg);opacity:0}45%{opacity:1}75%{transform:scale(1.12) rotate(6deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+.open{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 1px 2px rgba(90,20,40,.35));animation:open 1.1s cubic-bezier(.3,1.3,.5,1) both}
+@keyframes puff{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+.puff{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,176,204,.55) 0%,rgba(255,143,184,.2) 45%,rgba(255,143,184,0) 70%);animation:puff 2.4s ease-out both}
+@keyframes drawH{from{stroke-dashoffset:320}to{stroke-dashoffset:0}}
+@keyframes carveGlow{0%,100%{filter:drop-shadow(0 0 2px rgba(255,143,184,.5))}50%{filter:drop-shadow(0 0 9px rgba(255,143,184,1))}}
+.carve{position:absolute}.carve svg{display:block;width:100%;height:100%;overflow:visible;animation:carveGlow 2.6s ease-in-out infinite}
+.carve-path{stroke-dasharray:320;animation:drawH 2.2s ease both}
+@keyframes moonIn{from{opacity:0;transform:translateY(60px) scale(.8)}to{opacity:1;transform:none}}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 60px 18px rgba(255,190,215,.28),0 0 160px 60px rgba(224,43,79,.12)}50%{box-shadow:0 0 90px 30px rgba(255,190,215,.42),0 0 220px 90px rgba(224,43,79,.18)}}
+.moon{position:absolute;left:62%;top:4%;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 38% 36%,#fff7fa 0%,#ffe1ec 55%,#f5b9cf 100%);animation:moonIn 2.4s cubic-bezier(.2,.8,.2,1) both,moonGlow 5s ease-in-out 2.4s infinite}
+@keyframes bokeh{0%,100%{transform:translate(0,0) scale(1);opacity:.25}50%{transform:translate(18px,-26px) scale(1.2);opacity:.6}}
+.bokeh{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,190,215,.7),rgba(255,143,184,0) 70%);animation:bokeh ease-in-out infinite}
+.ground{position:absolute;left:8%;right:8%;bottom:0;height:34px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,143,184,.22) 0%,rgba(61,16,35,.9) 45%,rgba(26,10,18,0) 72%)}
+.flare{position:absolute;left:50%;bottom:4px;width:96px;height:30px;margin-left:-50px;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#724a3a,#2a1712);animation:fadein .6s ease .2s both}
+.gp{position:absolute;opacity:0;animation:fadein 1.4s ease both}
+@keyframes heartUp{0%{transform:translate(0,0) scale(.2);opacity:0}15%{transform:translate(-6px,-20px) scale(1);opacity:.95}50%{transform:translate(10px,-90px) scale(1)}100%{transform:translate(-8px,-200px) scale(.6);opacity:0}}
+.loveHeart{position:absolute;opacity:0;color:#ff5c93;filter:drop-shadow(0 0 6px rgba(255,92,147,.8));animation:heartUp ease-out infinite}
+@keyframes drift{from{transform:translateX(-22px)}to{transform:translateX(22px)}}
+.drift{position:absolute;pointer-events:none;animation:drift ease-in-out infinite alternate}
+.flut{display:block;opacity:0;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes flutTree{0%{transform:translate3d(0,0,0) rotateX(0) rotateY(0) rotateZ(0);opacity:0}6%{opacity:1}30%{transform:translate3d(-30px,130px,0) rotateX(160deg) rotateY(70deg) rotateZ(80deg)}60%{transform:translate3d(-70px,280px,0) rotateX(330deg) rotateY(150deg) rotateZ(170deg)}88%{opacity:.9}100%{transform:translate3d(-110px,440px,0) rotateX(520deg) rotateY(230deg) rotateZ(260deg);opacity:0}}
+.flutTree{animation-name:flutTree}
+@keyframes flutHero{0%{transform:translate3d(0,0,0) rotateX(0) rotateY(0) rotateZ(0);opacity:0}6%{opacity:.95}35%{transform:translate3d(-60px,320px,0) rotateX(200deg) rotateY(90deg) rotateZ(110deg)}70%{transform:translate3d(20px,620px,0) rotateX(400deg) rotateY(180deg) rotateZ(230deg)}92%{opacity:.8}100%{transform:translate3d(-40px,900px,0) rotateX(560deg) rotateY(260deg) rotateZ(320deg);opacity:0}}
+.flutHero{animation-name:flutHero}
+@keyframes flutPage{0%{transform:translate3d(0,0,0) rotateX(0) rotateY(0) rotateZ(0);opacity:0}3%{opacity:.8}50%{transform:translate3d(-120px,1700px,0) rotateX(900deg) rotateY(400deg) rotateZ(500deg)}96%{opacity:.6}100%{transform:translate3d(-200px,3450px,0) rotateX(1800deg) rotateY(800deg) rotateZ(1000deg);opacity:0}}
+.flutPage{animation-name:flutPage}
+@keyframes flutM{0%{transform:translate3d(0,0,0) rotateX(0) rotateY(0) rotateZ(0);opacity:0}5%{opacity:.9}50%{transform:translate3d(-60px,900px,0) rotateX(500deg) rotateY(220deg) rotateZ(280deg)}95%{opacity:.6}100%{transform:translate3d(-100px,1800px,0) rotateX(1000deg) rotateY(440deg) rotateZ(560deg);opacity:0}}
+.flutM{animation-name:flutM}
+@keyframes cardIn{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:none}}
+.card{all:unset;box-sizing:border-box;display:flex;flex-direction:column;background:#2c1019;border:1px solid #43172a;border-radius:16px;overflow:hidden;animation:cardIn .7s cubic-bezier(.2,.8,.2,1) both;cursor:pointer}
+.card:focus-visible{outline:3px solid #ffd1e2;outline-offset:3px}
+@keyframes anillo{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.25,1.6);opacity:0}}
+.ring{position:absolute;inset:-2px;border-radius:999px;border:2px solid #ff8fb8;animation:anillo 2.2s ease-out infinite}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}.bud,.flut,.loveHeart,.drift{display:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 1760px; position: relative; overflow: hidden; background: #1a0a12;">
+  <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; z-index: 1;">
+    <sc-for list="{{petals}}" as="p" hint-placeholder-count="0">
+      <div class="drift" style="{{p.drift}}"><svg class="{{p.cls}}" viewBox="-12 -2 24 32" style="{{p.flut}}"><path fill="currentColor" d="M0 28C-9 22-11 10-7 3C-5 0-2 0 0 3C2 0 5 0 7 3C11 10 9 22 0 28Z"></path><path fill="#e0487e" opacity=".35" d="M0 28C-3 24-3 19 0 16C3 19 3 24 0 28Z"></path></svg></div>
+    </sc-for>
+  </div>
+
+  <header style="position: relative; z-index: 3; padding: 14px 16px; border-bottom: 1px solid #43172a; background: rgba(26,10,18,.92); display: flex; align-items: center; justify-content: center; gap: 8px;">
+    <svg class="beat" aria-hidden="true" viewBox="0 0 100 94" style="width: 20px; height: 19px; color: #ff8fb8;"><path fill="currentColor" d="M50 88C50 88 8 58 8 32 8 16 20 6 33 6c9 0 15 6 17 12 2-6 8-12 17-12 13 0 25 10 25 26 0 26-42 56-42 56z"></path></svg>
+    <span class="serif" style="font-size: 20px; font-weight: 600;">Romance<strong style="color: #e02b4f;">TV</strong>: <em class="script" style="font-style: normal; color: #f2a7b3; font-size: 1.25em;">El arte de amar</em></span>
+  </header>
+
+  <section style="position: relative; z-index: 2; height: 470px; padding: 28px 16px 0;">
+    <div style="position: absolute; right: -150px; top: 30px; width: 660px; height: 800px; transform: scale(.58); transform-origin: 100% 0;">
+    <!-- ÁRBOL DE CEREZO: crece, florece desde capullos, se mece con el viento -->
+    <div class="tree" aria-hidden="true" style="left: 0; top: 0; width: 660px; height: 800px;">
+      <div class="moon"></div>
+      <sc-for list="{{bokeh}}" as="bk" hint-placeholder-count="0"><div class="bokeh" style="{{bk.s}}"></div></sc-for>
+      <div class="ground"></div>
+      <sc-for list="{{groundPetals}}" as="g" hint-placeholder-count="0"><svg class="gp" viewBox="-12 -2 24 32" style="{{g.s}}"><path fill="currentColor" d="M0 28C-9 22-11 10-7 3C-5 0-2 0 0 3C2 0 5 0 7 3C11 10 9 22 0 28Z"></path><path fill="#e0487e" opacity=".35" d="M0 28C-3 24-3 19 0 16C3 19 3 24 0 28Z"></path></svg></sc-for>
+      <sc-for list="{{trunk}}" as="n0" hint-placeholder-count="0">
+<div class="node" style="{{n0.wrap}}"><div class="{{n0.swc}}" style="{{n0.sway}}">
+<div class="knot" style="{{n0.knot}}"></div><div class="bar" style="{{n0.bar}}"></div>
+<div class="carve" style="{{n0.carve}}"><svg viewBox="0 0 100 94"><path class="carve-path" style="{{n0.carveDelay}}" d="M50 88C50 88 8 58 8 32 8 16 20 6 33 6c9 0 15 6 17 12 2-6 8-12 17-12 13 0 25 10 25 26 0 26-42 56-42 56z" fill="none" stroke="#ffb3cc" stroke-width="7" stroke-linejoin="round"></path></svg></div>
+<sc-for list="{{n0.kids}}" as="n1" hint-placeholder-count="0">
+<div class="node" style="{{n1.wrap}}"><div class="{{n1.swc}}" style="{{n1.sway}}">
+<div class="knot" style="{{n1.knot}}"></div><div class="bar" style="{{n1.bar}}"></div>
+<sc-for list="{{n1.kids}}" as="n2" hint-placeholder-count="0">
+<div class="node" style="{{n2.wrap}}"><div class="{{n2.swc}}" style="{{n2.sway}}">
+<div class="knot" style="{{n2.knot}}"></div><div class="bar" style="{{n2.bar}}"></div>
+<sc-for list="{{n2.kids}}" as="n3" hint-placeholder-count="0">
+<div class="node" style="{{n3.wrap}}"><div class="{{n3.swc}}" style="{{n3.sway}}">
+<div class="knot" style="{{n3.knot}}"></div><div class="bar" style="{{n3.bar}}"></div>
+<sc-for list="{{n3.puffs}}" as="pf" hint-placeholder-count="0"><div class="puff" style="{{pf.s}}"></div></sc-for>
+<sc-for list="{{n3.kids}}" as="n4" hint-placeholder-count="0">
+<div class="node" style="{{n4.wrap}}"><div class="{{n4.swc}}" style="{{n4.sway}}">
+<div class="knot" style="{{n4.knot}}"></div><div class="bar" style="{{n4.bar}}"></div>
+<sc-for list="{{n4.puffs}}" as="pf" hint-placeholder-count="0"><div class="puff" style="{{pf.s}}"></div></sc-for>
+<sc-for list="{{n4.kids}}" as="n5" hint-placeholder-count="0">
+<div class="node" style="{{n5.wrap}}"><div class="{{n5.swc}}" style="{{n5.sway}}">
+<div class="knot" style="{{n5.knot}}"></div><div class="bar" style="{{n5.bar}}"></div>
+<sc-for list="{{n5.puffs}}" as="pf" hint-placeholder-count="0"><div class="puff" style="{{pf.s}}"></div></sc-for>
+<sc-for list="{{n5.flowers}}" as="f" hint-placeholder-count="0"><div class="fl" style="{{f.pos}}"><span class="bud" style="{{f.bud}}"></span><svg class="open" viewBox="-25 -25 50 50" style="{{f.open}}"><g fill="currentColor"><path d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(72)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(144)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(216)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(288)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path></g><circle r="9" fill="#ff5c93" opacity=".3"></circle><path d="M0 0L5.3 -7.3M0 0L8.6 2.8M0 0L0.0 9.0M0 0L-8.6 2.8M0 0L-5.3 -7.3" stroke="#d6336c" stroke-width=".9" stroke-linecap="round" fill="none"></path><g fill="#ffd36b"><circle cx="5.3" cy="-7.3" r="1.5"></circle><circle cx="8.6" cy="2.8" r="1.5"></circle><circle cx="0.0" cy="9.0" r="1.5"></circle><circle cx="-8.6" cy="2.8" r="1.5"></circle><circle cx="-5.3" cy="-7.3" r="1.5"></circle></g></svg></div></sc-for>
+</div></div>
+</sc-for>
+<sc-for list="{{n4.flowers}}" as="f" hint-placeholder-count="0"><div class="fl" style="{{f.pos}}"><span class="bud" style="{{f.bud}}"></span><svg class="open" viewBox="-25 -25 50 50" style="{{f.open}}"><g fill="currentColor"><path d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(72)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(144)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(216)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(288)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path></g><circle r="9" fill="#ff5c93" opacity=".3"></circle><path d="M0 0L5.3 -7.3M0 0L8.6 2.8M0 0L0.0 9.0M0 0L-8.6 2.8M0 0L-5.3 -7.3" stroke="#d6336c" stroke-width=".9" stroke-linecap="round" fill="none"></path><g fill="#ffd36b"><circle cx="5.3" cy="-7.3" r="1.5"></circle><circle cx="8.6" cy="2.8" r="1.5"></circle><circle cx="0.0" cy="9.0" r="1.5"></circle><circle cx="-8.6" cy="2.8" r="1.5"></circle><circle cx="-5.3" cy="-7.3" r="1.5"></circle></g></svg></div></sc-for>
+</div></div>
+</sc-for>
+<sc-for list="{{n3.flowers}}" as="f" hint-placeholder-count="0"><div class="fl" style="{{f.pos}}"><span class="bud" style="{{f.bud}}"></span><svg class="open" viewBox="-25 -25 50 50" style="{{f.open}}"><g fill="currentColor"><path d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(72)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(144)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(216)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(288)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path></g><circle r="9" fill="#ff5c93" opacity=".3"></circle><path d="M0 0L5.3 -7.3M0 0L8.6 2.8M0 0L0.0 9.0M0 0L-8.6 2.8M0 0L-5.3 -7.3" stroke="#d6336c" stroke-width=".9" stroke-linecap="round" fill="none"></path><g fill="#ffd36b"><circle cx="5.3" cy="-7.3" r="1.5"></circle><circle cx="8.6" cy="2.8" r="1.5"></circle><circle cx="0.0" cy="9.0" r="1.5"></circle><circle cx="-8.6" cy="2.8" r="1.5"></circle><circle cx="-5.3" cy="-7.3" r="1.5"></circle></g></svg></div></sc-for>
+</div></div>
+</sc-for>
+<sc-for list="{{n2.flowers}}" as="f" hint-placeholder-count="0"><div class="fl" style="{{f.pos}}"><span class="bud" style="{{f.bud}}"></span><svg class="open" viewBox="-25 -25 50 50" style="{{f.open}}"><g fill="currentColor"><path d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(72)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(144)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(216)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path><path transform="rotate(288)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path></g><circle r="9" fill="#ff5c93" opacity=".3"></circle><path d="M0 0L5.3 -7.3M0 0L8.6 2.8M0 0L0.0 9.0M0 0L-8.6 2.8M0 0L-5.3 -7.3" stroke="#d6336c" stroke-width=".9" stroke-linecap="round" fill="none"></path><g fill="#ffd36b"><circle cx="5.3" cy="-7.3" r="1.5"></circle><circle cx="8.6" cy="2.8" r="1.5"></circle><circle cx="0.0" cy="9.0" r="1.5"></circle><circle cx="-8.6" cy="2.8" r="1.5"></circle><circle cx="-5.3" cy="-7.3" r="1.5"></circle></g></svg></div></sc-for>
+</div></div>
+</sc-for>
+</div></div>
+</sc-for>
+</div></div>
+      </sc-for>
+      <div class="flare"></div>
+      <sc-for list="{{loveHearts}}" as="lh" hint-placeholder-count="0"><svg class="loveHeart" viewBox="0 0 100 94" style="{{lh.s}}"><path fill="currentColor" d="M50 88C50 88 8 58 8 32 8 16 20 6 33 6c9 0 15 6 17 12 2-6 8-12 17-12 13 0 25 10 25 26 0 26-42 56-42 56z"></path></svg></sc-for>
+      <sc-for list="{{treePetals}}" as="p" hint-placeholder-count="0"><div class="drift" style="{{p.drift}}"><svg class="flut flutTree" viewBox="-12 -2 24 32" style="{{p.flut}}"><path fill="currentColor" d="M0 28C-9 22-11 10-7 3C-5 0-2 0 0 3C2 0 5 0 7 3C11 10 9 22 0 28Z"></path><path fill="#e0487e" opacity=".35" d="M0 28C-3 24-3 19 0 16C3 19 3 24 0 28Z"></path></svg></div></sc-for>
+    </div>
+    </div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 14px; width: 250px;">
+      <span class="rise" style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #f2a7b3;">Solo romance</span>
+      <h1 class="serif rise" style="margin: 0; font-size: 46px; line-height: 1; font-weight: 600; animation-delay: .2s;">Películas de <em style="color: #ff8fb8;">Romance</em></h1>
+      <p class="script rise" style="margin: 0; font-size: 28px; color: #f2a7b3; animation-delay: .4s;">cada historia, una flor</p>
+    </div>
+  </section>
+
+  <section style="position: relative; z-index: 2; padding: 0 16px; display: flex; flex-direction: column; gap: 8px;">
+    <label for="buscar-m" style="font-size: 13px; font-weight: 500; color: #f2a7b3;">Buscar por título</label>
+    <div style="display: flex; align-items: center; gap: 10px; height: 54px; padding: 0 16px; background: #2c1019; border: 1.5px solid #5a1f36; border-radius: 16px;">
+      <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #ff8fb8;"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15.5 15.5 21 21M17 10.5A6.5 6.5 0 1 1 4 10.5a6.5 6.5 0 0 1 13 0Z"></path></svg>
+      <input id="buscar-m" type="search" placeholder="Buscar por título…" style="flex-grow: 1; min-width: 0; background: none; border: none; outline: none; color: #fdf4f0; font: inherit; font-size: 16px;">
+    </div>
+    <p style="margin: 0; font-size: 13px; color: #c9a3ae;">Filtra entre las 20 películas cargadas · página 1</p>
+  </section>
+
+  <section style="position: relative; z-index: 2; padding: 26px 16px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;">
+    <sc-for list="{{cards}}" as="c" hint-placeholder-count="6">
+      <button class="card" type="button" style="{{c.delay}}" aria-label="Ver resumen de {{c.title}}">
+        <span style="position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden;">
+          <span style="{{c.bg}}"></span>
+          <span class="serif" style="position: absolute; left: 12px; right: 12px; bottom: 40px; font-size: 17px; line-height: 1.12; font-style: italic; font-weight: 600; text-shadow: 0 2px 12px rgba(0,0,0,.5);">{{c.title}}</span>
+          <span style="position: absolute; top: 8px; left: 8px; font-size: 11px; font-weight: 600; color: #ffd1e2; background: rgba(26,10,18,.55); padding: 3px 8px; border-radius: 999px;">#{{c.rank}}</span>
+          <span style="position: absolute; left: 8px; bottom: 8px; font-size: 12px; font-weight: 600; color: #d9a441; background: rgba(26,10,18,.8); padding: 3px 8px; border-radius: 999px;">★ {{c.rating}}</span>
+        </span>
+        <span style="padding: 10px 12px 14px; display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{c.title}}</span>
+          <span style="font-size: 12px; color: #c9a3ae;">{{c.year}}</span>
+        </span>
+      </button>
+    </sc-for>
+  </section>
+
+  <section style="position: relative; z-index: 2; padding: 36px 16px 0; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <button type="button" style="all: unset; box-sizing: border-box; position: relative; width: 100%; min-height: 56px; border-radius: 999px; background: #e02b4f; color: #fff; font-size: 17px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; box-shadow: 0 14px 36px rgba(224,43,79,.4);">
+      <span class="ring"></span>
+      Cargar 20 más
+    </button>
+    <span style="font-size: 13px; color: #c9a3ae;">Trae la página 2 · 20 películas por página</span>
+  </section>
+
+  <footer style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 20px 16px 26px; border-top: 1px solid #43172a; font-size: 12px; line-height: 1.5; color: #c9a3ae; text-align: center;">
+    Datos provistos por <a href="https://www.themoviedb.org/">TMDB</a>. Este producto usa la API de TMDB pero no está avalado ni certificado por TMDB.
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1760}}'>
+class Component extends DCLogic {
+  renderVals() {
+    if (this._v) return this._v;
+    var seed = 29;
+    function r() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    var cols = ['#ffe0ea', '#ffc6da', '#ffb3cc', '#ff9cc0', '#f7a1c0'];
+    function rain(n, width, top, dur, cls) {
+      var out = [];
+      for (var q = 0; q < n; q++) {
+        var z = 10 + r() * 12;
+        out.push({
+          cls: 'flut ' + cls,
+          drift: 'left:' + Math.round(r() * width) + 'px;top:' + top + 'px;animation-duration:' + (1.6 + r() * 1.6).toFixed(2) + 's;animation-delay:' + (-r() * 3).toFixed(2) + 's',
+          flut: 'width:' + z.toFixed(1) + 'px;height:' + (z * 1.3).toFixed(1) + 'px;color:' + cols[q % cols.length] + ';animation-duration:' + (dur[0] + r() * dur[1]).toFixed(1) + 's;animation-delay:' + (-r() * dur[0]).toFixed(1) + 's'
+        });
+      }
+      return out;
+    }
+    var raw = [['Diario de una pasión', 2004, '7.9', '#ff8fb8', '#7a1f3d'], ['Titanic', 1997, '7.9', '#f2a7b3', '#5a1f36'], ['Orgullo y prejuicio', 2005, '8.1', '#e8628f', '#3d1023'], ['La La Land', 2016, '7.9', '#d9a441', '#6b1f33'], ['Antes del amanecer', 1995, '7.7', '#ffd1e2', '#8f2440'], ['Yo antes de ti', 2016, '7.9', '#c1547d', '#2c1019']];
+    var cards = raw.map(function (m, n) {
+      return { title: m[0], year: m[1], rating: m[2], rank: n + 1, delay: 'animation-delay:' + (n * 0.08).toFixed(2) + 's', bg: 'position:absolute;inset:0;background:radial-gradient(130% 90% at 30% 15%, ' + m[3] + ' 0%, ' + m[4] + ' 58%, #1a0a12 100%)' };
+    });
+    this._v = Object.assign(this.tree(r, 660, 800), { petals: rain(14, 390, -30, [9, 6], 'flutM'), cards: cards });
+    return this._v;
+  }
+
+  tree(r, W, H) {
+    var cols = ['#ffe0ea', '#ffc6da', '#ffb3cc', '#ff9cc0', '#f7a1c0'];
+    var MAXD = 5;
+    var pts = [];
+    function bias(g, rel) {
+      var ng = g + rel;
+      rel += (-90 - ng) * 0.14;
+      ng = g + rel;
+      if (ng > -8) rel -= (ng + 8) * 0.8;
+      if (ng < -172) rel += (-172 - ng) * 0.8;
+      return rel;
+    }
+    function f1(v) { return v.toFixed(1); }
+    function build(depth, len, thick, rel, along, gx, gy, gAng, delay) {
+      var dur = 0.45 + len / 240;
+      var rad = gAng * Math.PI / 180, c = Math.cos(rad), s = Math.sin(rad);
+      var endT = Math.max(1.4, thick * 0.66);
+      var tp = f1((1 - endT / thick) / 2 * 100);
+      var node = {
+        wrap: 'left:' + f1(along) + 'px;top:0;transform:rotate(' + f1(rel) + 'deg)',
+        swc: 'sway sw' + depth,
+        sway: 'animation-duration:' + (5 + r() * 3.5).toFixed(2) + 's;animation-delay:' + (-r() * 7).toFixed(2) + 's',
+        knot: 'left:' + f1(-thick / 2) + 'px;top:' + f1(-thick / 2) + 'px;width:' + f1(thick) + 'px;height:' + f1(thick) + 'px;animation-delay:' + delay.toFixed(2) + 's',
+        bar: 'left:0;top:' + f1(-thick / 2) + 'px;width:' + f1(len) + 'px;height:' + f1(thick) + 'px;clip-path:polygon(0 0,100% ' + tp + '%,100% ' + (100 - tp).toFixed(1) + '%,0 100%);animation-duration:' + dur.toFixed(2) + 's;animation-delay:' + delay.toFixed(2) + 's',
+        kids: [], flowers: [], puffs: []
+      };
+      if (depth === 0) {
+        node.carve = 'left:' + f1(len * 0.42) + 'px;top:-11px;width:24px;height:22px;transform:rotate(' + f1(-gAng) + 'deg)';
+        node.carveDelay = 'animation-delay:' + (delay + dur + 1.2).toFixed(2) + 's';
+      }
+      function at(x) { return [gx + c * x, gy + s * x]; }
+      if (depth < MAXD) {
+        var cont = bias(gAng, (r() - 0.5) * 24);
+        var e = at(len);
+        node.kids.push(build(depth + 1, len * (0.74 + r() * 0.1), thick * 0.7, cont, len, e[0], e[1], gAng + cont, delay + dur * 0.92));
+        var sides = depth === 0 ? 1 : depth === 1 ? 2 : depth === 2 ? (r() < 0.5 ? 2 : 1) : (r() < 0.6 ? 1 : 0);
+        var sign = r() < 0.5 ? -1 : 1;
+        for (var k = 0; k < sides; k++) {
+          sign = -sign;
+          var t = 0.45 + r() * 0.45;
+          var sr = bias(gAng, sign * (30 + r() * 26));
+          var b = at(len * t);
+          node.kids.push(build(depth + 1, len * (0.6 + r() * 0.16), thick * 0.56, sr, len * t, b[0], b[1], gAng + sr, delay + dur * t));
+        }
+      }
+      var nf = depth === 5 ? 5 : depth === 4 ? 3 : depth === 3 ? 2 : depth === 2 ? 1 : 0;
+      for (var i = 0; i < nf; i++) {
+        var fx = depth === 5 ? len * (0.25 + r() * 0.9) : len * (0.35 + r() * 0.65);
+        var fy = (r() - 0.5) * (14 + thick * 2);
+        var sz = depth === 5 ? 15 + r() * 15 : 13 + r() * 12;
+        var d0 = delay + dur * Math.min(1, fx / len) + 0.4 + r() * 1.1;
+        node.flowers.push({
+          pos: 'left:' + f1(fx - sz / 2) + 'px;top:' + f1(fy - sz / 2) + 'px;width:' + f1(sz) + 'px;height:' + f1(sz) + 'px;color:' + cols[Math.floor(r() * cols.length)] + ';transform:rotate(' + Math.round(r() * 72) + 'deg)',
+          bud: 'animation-delay:' + d0.toFixed(2) + 's',
+          open: 'animation-delay:' + (d0 + 0.85).toFixed(2) + 's'
+        });
+        pts.push([gx + c * fx - s * fy, gy + s * fx + c * fy]);
+      }
+      if (depth >= 4) {
+        var ps = depth === 5 ? 70 + r() * 40 : 50 + r() * 30;
+        var px = len * (0.5 + r() * 0.5);
+        node.puffs.push({ s: 'left:' + f1(px - ps / 2) + 'px;top:' + f1(-ps / 2) + 'px;width:' + f1(ps) + 'px;height:' + f1(ps) + 'px;animation-delay:' + (delay + dur + 0.6).toFixed(2) + 's' });
+      }
+      return node;
+    }
+    var bx = W / 2, by = H - 12;
+    var trunk = build(0, H * 0.25, 40, -88 + (r() - 0.5) * 4, 0, bx, by, -88, 0.3);
+    trunk.wrap = 'left:' + bx + 'px;top:' + by + 'px;transform:rotate(-88deg)';
+    function pick() { return pts[Math.floor(r() * pts.length)]; }
+    var treePetals = [], loveHearts = [], groundPetals = [], bokeh = [];
+    for (var j = 0; j < 26; j++) {
+      var p = pick(), z = 10 + r() * 8;
+      treePetals.push({
+        drift: 'left:' + f1(p[0]) + 'px;top:' + f1(p[1]) + 'px;animation-duration:' + (1.4 + r() * 1.4).toFixed(2) + 's;animation-delay:' + (-r() * 3).toFixed(2) + 's',
+        flut: 'width:' + f1(z) + 'px;height:' + f1(z * 1.3) + 'px;color:' + cols[j % cols.length] + ';animation-duration:' + (6 + r() * 5).toFixed(1) + 's;animation-delay:' + (5 + r() * 10).toFixed(1) + 's'
+      });
+    }
+    for (var h = 0; h < 8; h++) {
+      var q = pick(), hz = 10 + r() * 10;
+      loveHearts.push({ s: 'left:' + f1(q[0]) + 'px;top:' + f1(q[1]) + 'px;width:' + f1(hz) + 'px;height:' + f1(hz * 0.94) + 'px;animation-duration:' + (5 + r() * 4).toFixed(1) + 's;animation-delay:' + (6 + r() * 9).toFixed(1) + 's' });
+    }
+    for (var g = 0; g < 46; g++) {
+      var ang = r() * Math.PI * 2, rr = Math.sqrt(r());
+      var gz = 8 + r() * 7;
+      groundPetals.push({ s: 'left:' + f1(bx + Math.cos(ang) * rr * W * 0.4) + 'px;top:' + f1(by - 4 + Math.sin(ang) * rr * 12) + 'px;width:' + f1(gz) + 'px;height:' + f1(gz * 1.3) + 'px;color:' + cols[g % cols.length] + ';transform:rotate(' + Math.round(r() * 360) + 'deg) scaleY(.55);animation-delay:' + (6 + g * 0.5 + r()).toFixed(1) + 's' });
+    }
+    for (var b2 = 0; b2 < 9; b2++) {
+      var bz = 30 + r() * 70;
+      bokeh.push({ s: 'left:' + f1(r() * W) + 'px;top:' + f1(r() * H * 0.7) + 'px;width:' + f1(bz) + 'px;height:' + f1(bz) + 'px;animation-duration:' + (7 + r() * 6).toFixed(1) + 's;animation-delay:' + (-r() * 8).toFixed(1) + 's' });
+    }
+    return { trunk: [trunk], treePetals: treePetals, loveHearts: loveHearts, groundPetals: groundPetals, bokeh: bokeh };
+  }
+}
+</script>
+</body>
+</html>
