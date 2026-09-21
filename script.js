@@ -7,6 +7,12 @@ const grid = document.getElementById("results-grid");
 const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("modal-close");
+const searchInput = document.getElementById("search-input");
+const loadMoreButton = document.getElementById("load-more");
+
+let allItems = [];
+let currentPage = 1;
+let totalPages = 1;
 
 function posterUrl(path) {
   return path ? IMAGE_BASE + path : null;
@@ -24,7 +30,7 @@ function getYear(date) {
 
 function shortOverview(text) {
   if (!text) return "Sin descripción disponible.";
-  return text.length > 140 ? text.slice(0, 140).trim() + "…" : text;
+  return text.length > 160 ? text.slice(0, 160).trim() + "…" : text;
 }
 
 async function cardData(item) {
@@ -80,21 +86,53 @@ modalOverlay.addEventListener("click", (event) => {
   if (event.target === modalOverlay) modalOverlay.hidden = true;
 });
 
+async function renderGrid(items) {
+  grid.innerHTML = "";
+  for (const item of items) {
+    grid.appendChild(await createCard(item));
+  }
+}
+
+function filteredItems() {
+  const query = searchInput.value.trim().toLowerCase();
+  if (!query) 
+    return allItems;
+
+  return allItems.filter((item) => item.title.toLowerCase().includes(query));
+}
+
+async function loadPage(page) {
+  loadMoreButton.disabled = true;
+  const { results, totalPages: total } = await fetchRomanceMovies(page);
+  currentPage = page;
+  totalPages = total;
+  allItems = [...allItems, ...results]
+  loadMoreButton.hidden = currentPage >= totalPages;
+  loadMoreButton.disabled = false;
+}
+
 async function loadRomanceMovies() {
   setStatus("loading", "Cargando tus peliculas...");
   grid.innerHTML = "";
 
   try {
-
-    const items = await fetchRomanceMovies();
-
+    await loadPage(1);
     setStatus(null);
-    for (const item of items) {
-      grid.appendChild(await createCard(item));
-    }
+    await renderGrid(filteredItems());
   } catch (error) {
     setStatus("error", "⚠️ " + error.message);
   }
 }
+
+searchInput.addEventListener("input", () => renderGrid(filteredItems()));
+
+loadMoreButton.addEventListener("click", async () => {
+  try {
+    await loadPage(currentPage + 1);
+    await renderGrid(filteredItems());
+  } catch (error) {
+    setStatus("error", "⚠️ " + error.message);
+  }
+});
 
 loadRomanceMovies();
