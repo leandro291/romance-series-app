@@ -3,7 +3,8 @@
 let configPromise;
 
 async function fetchEnv() {
-  const text = await fetch("./.env").then((r) => r.text());
+  const response = await fetch("./.env");
+  const text = await response.text();
   const env = {};
   for (const line of text.split("\n")) {
     const trimmed = line.trim();
@@ -14,14 +15,17 @@ async function fetchEnv() {
   return env;
 }
 
+async function loadConfig() {
+  const env = await fetchEnv();
+  return {
+    API_KEY: env.TMDB_API_KEY,
+    BASE_URL: env.TMDB_BASE_URL,
+    IMAGE_BASE: env.TMDB_IMAGE_BASE,
+    LANGUAGE: env.TMDB_LANGUAGE,
+  };
+}
+
 export function getConfig() {
-  if (!configPromise) {
-    configPromise = fetchEnv().then((env) => ({
-      API_KEY: env.TMDB_API_KEY,
-      BASE_URL: env.TMDB_BASE_URL,
-      IMAGE_BASE: env.TMDB_IMAGE_BASE,
-      LANGUAGE: env.TMDB_LANGUAGE,
-    }));
-  }
+  if (!configPromise) configPromise = loadConfig();
   return configPromise;
 }
