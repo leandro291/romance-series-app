@@ -24,6 +24,9 @@
     <symbol id="petalo" viewBox="0 0 100 94">
       <path fill="currentColor" d="M50 6c24 16 36 42 16 66-10 12-22 12-32 0C14 48 26 22 50 6z"></path>
     </symbol>
+    <symbol id="lupa" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15.5 15.5 21 21M17 10.5A6.5 6.5 0 1 1 4 10.5a6.5 6.5 0 0 1 13 0Z"></path>
+    </symbol>
     <symbol id="flor-sakura" viewBox="0 0 40 40">
       <g fill="currentColor">
         <circle cx="20" cy="9" r="8"></circle>
@@ -166,9 +169,16 @@
         <p class="view-subtitle">Toca una para ver el resumen.</p>
       </div>
 
+      <div class="search-bar">
+        <svg class="search-icon" aria-hidden="true"><use href="#lupa"></use></svg>
+        <input id="search-input" type="search" placeholder="Buscar por título..." aria-label="Buscar película" />
+      </div>
+
       <div id="status-area" class="status-area"></div>
 
       <div id="results-grid" class="grid"></div>
+
+      <button id="load-more" class="load-more" hidden>Cargar más</button>
     </section>
   </main>
 
