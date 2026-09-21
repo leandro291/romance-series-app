@@ -31,11 +31,12 @@ async function tmdbFetch(path, params = {}) {
 }
 
 
-export async function fetchRomanceMovies() {
+export async function fetchRomanceMovies(page = 1) {
   const data = await tmdbFetch("/discover/movie", {
     with_genres: ROMANCE_GENRE_ID,
     sort_by: "popularity.desc",
+    page,
   });
 
-  return data.results;
+  return { results: data.results, page: data.page, totalPages: data.total_pages };
 }
