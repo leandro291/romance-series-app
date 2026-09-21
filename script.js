@@ -1,6 +1,6 @@
 // Romance TV — 20 películas y series de romance favoritas.
 
-import { getConfig } from "./env.js";
+import { TMDB_CONFIG } from "./config.js";
 import { FAVORITES, fetchDetails } from "./api.js";
 
 const statusArea = document.getElementById("status-area");
@@ -9,10 +9,8 @@ const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("modal-close");
 
-async function posterUrl(path) {
-  if (!path) return null;
-  const config = await getConfig();
-  return config.IMAGE_BASE + path;
+function posterUrl(path) {
+  return path ? TMDB_CONFIG.IMAGE_BASE + path : null;
 }
 
 function escapeHtml(text) {
@@ -30,10 +28,10 @@ function shortOverview(text) {
   return text.length > 140 ? text.slice(0, 140).trim() + "…" : text;
 }
 
-async function cardData(item) {
+function cardData(item) {
   return {
     title: escapeHtml(item.title || item.name),
-    poster: await posterUrl(item.poster_path),
+    poster: posterUrl(item.poster_path),
     year: getYear(item.release_date || item.first_air_date),
   };
 }
@@ -47,11 +45,11 @@ function setStatus(type, message) {
   statusArea.innerHTML = `<div class="status-message ${type}">${icon}<span>${message}</span></div>`;
 }
 
-async function createCard(item) {
+function createCard(item) {
   const card = document.createElement("article");
   card.className = "card";
 
-  const { title, poster, year } = await cardData(item);
+  const { title, poster, year } = cardData(item);
 
   card.innerHTML = `
     <div class="card-poster-wrap">
@@ -67,8 +65,8 @@ async function createCard(item) {
   return card;
 }
 
-async function openDetails(item) {
-  const { title, poster, year } = await cardData(item);
+function openDetails(item) {
+  const { title, poster, year } = cardData(item);
 
   modalOverlay.hidden = false;
   modalContent.innerHTML = `
@@ -90,9 +88,7 @@ async function loadFavorites() {
   try {
     const items = await Promise.all(FAVORITES.map((fav) => fetchDetails(fav)));
     setStatus(null);
-    for (const item of items) {
-      grid.appendChild(await createCard(item));
-    }
+    items.forEach((item) => grid.appendChild(createCard(item)));
   } catch (error) {
     setStatus("error", "⚠️ " + error.message);
   }
