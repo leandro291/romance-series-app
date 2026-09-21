@@ -6,7 +6,7 @@
   <title>RomanceTV: El arte de amar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Parisienne&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,178 +21,179 @@
     <symbol id="mitad-der" viewBox="0 0 100 94">
       <path fill="currentColor" d="M50 18c2-6 8-12 17-12 13 0 25 10 25 26 0 26-42 56-42 56l2-20-8-12 10-12-10-12z"></path>
     </symbol>
-    <symbol id="petalo" viewBox="0 0 100 94">
-      <path fill="currentColor" d="M50 6c24 16 36 42 16 66-10 12-22 12-32 0C14 48 26 22 50 6z"></path>
+    <!-- pétalo de sakura con la muesca en la punta -->
+    <symbol id="petalo" viewBox="-12 -2 24 32">
+      <path fill="currentColor" d="M0 28C-9 22-11 10-7 3C-5 0-2 0 0 3C2 0 5 0 7 3C11 10 9 22 0 28Z"></path>
+      <path fill="#e0487e" opacity=".35" d="M0 28C-3 24-3 19 0 16C3 19 3 24 0 28Z"></path>
+    </symbol>
+    <!-- flor de sakura: 5 pétalos, estambres y centro -->
+    <symbol id="sakura" viewBox="-25 -25 50 50">
+      <g fill="currentColor">
+        <path d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path>
+        <path transform="rotate(72)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path>
+        <path transform="rotate(144)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path>
+        <path transform="rotate(216)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path>
+        <path transform="rotate(288)" d="M0 -3C-8 -9 -11 -19 -5 -24L0 -20.5L5 -24C11 -19 8 -9 0 -3Z"></path>
+      </g>
+      <circle r="9" fill="#ff5c93" opacity=".3"></circle>
+      <path d="M0 0L5.3 -7.3M0 0L8.6 2.8M0 0L0 9M0 0L-8.6 2.8M0 0L-5.3 -7.3" stroke="#d6336c" stroke-width=".9" stroke-linecap="round" fill="none"></path>
+      <g fill="#ffd36b">
+        <circle cx="5.3" cy="-7.3" r="1.5"></circle><circle cx="8.6" cy="2.8" r="1.5"></circle><circle cx="0" cy="9" r="1.5"></circle><circle cx="-8.6" cy="2.8" r="1.5"></circle><circle cx="-5.3" cy="-7.3" r="1.5"></circle>
+      </g>
+    </symbol>
+    <!-- flor simple (íconos, spinner, botón) -->
+    <symbol id="flor" viewBox="0 0 40 40">
+      <g fill="currentColor">
+        <circle cx="20" cy="9" r="8"></circle><circle cx="30" cy="16" r="8"></circle><circle cx="26" cy="27" r="8"></circle><circle cx="14" cy="27" r="8"></circle><circle cx="10" cy="16" r="8"></circle>
+      </g>
+      <circle cx="20" cy="18" r="3.5" fill="#f6c667"></circle>
     </symbol>
     <symbol id="lupa" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15.5 15.5 21 21M17 10.5A6.5 6.5 0 1 1 4 10.5a6.5 6.5 0 0 1 13 0Z"></path>
     </symbol>
-    <symbol id="flor-sakura" viewBox="0 0 40 40">
-      <g fill="currentColor">
-        <circle cx="20" cy="9" r="8"></circle>
-        <circle cx="30" cy="16" r="8"></circle>
-        <circle cx="26" cy="27" r="8"></circle>
-        <circle cx="14" cy="27" r="8"></circle>
-        <circle cx="10" cy="16" r="8"></circle>
-      </g>
-      <circle cx="20" cy="18" r="3.5" fill="#f6c667"></circle>
+    <symbol id="mas" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"></path>
+    </symbol>
+    <symbol id="ficha" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 4h16v16H4zM4 9h16M9 13h7M9 16h5"></path>
+    </symbol>
+    <symbol id="reloj" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 3a9 9 0 1 0 9 9M12 8v5l3 2"></path>
+    </symbol>
+    <symbol id="cerrar" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"></path>
     </symbol>
   </svg>
 
+  <!-- Lluvia de pétalos por toda la página (la llena sakura.js) -->
+  <div id="lluvia" class="lluvia" aria-hidden="true"></div>
+
   <header class="header">
+    <div id="corazones" class="corazones-fila" aria-hidden="true"></div>
     <div class="header-inner">
-
-      <div class="corazones-fila" aria-hidden="true">
-        <svg><use href="#corazon"></use></svg>
-        <svg><use href="#corazon"></use></svg>
-        <span class="corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-        <svg><use href="#corazon"></use></svg>
-        <svg><use href="#corazon"></use></svg>
-        <span class="corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-        <svg><use href="#corazon"></use></svg>
-        <svg><use href="#corazon"></use></svg>
-        <span class="corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-      </div>
-
       <div class="logo">
-        <svg class="logo-corazon" aria-hidden="true"><use href="#corazon"></use></svg>
-        <span class="logo-text">Romance<strong>TV</strong>: <em class="script">El arte de amar</em></span>
+        <svg class="logo-corazon latido" aria-hidden="true"><use href="#corazon"></use></svg>
+        <span>Romance<strong>TV</strong>: <em class="script">El arte de amar</em></span>
       </div>
-
-      <div class="corazones-fila" aria-hidden="true">
-        <span class="corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-        <svg><use href="#corazon"></use></svg>
-        <svg><use href="#corazon"></use></svg>
-        <span class="corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-        <svg><use href="#corazon"></use></svg>
-        <svg><use href="#corazon"></use></svg>
-        <span class="corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-        <svg><use href="#corazon"></use></svg>
-        <svg><use href="#corazon"></use></svg>
-      </div>
-
+      <p class="header-estado">
+        <span class="punto" aria-hidden="true"></span>
+        <span id="header-count">Cargando…</span>
+      </p>
     </div>
   </header>
 
-  <!-- Corazones en las 4 esquinas de la pantalla -->
-  <div class="esquina esquina-tl" aria-hidden="true">
-    <svg class="e-corazon a"><use href="#corazon"></use></svg>
-    <span class="e-corazon b corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-  </div>
-  <div class="esquina esquina-tr" aria-hidden="true">
-    <span class="e-corazon a corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-    <svg class="e-corazon b"><use href="#corazon"></use></svg>
-  </div>
-  <div class="esquina esquina-bl" aria-hidden="true">
-    <svg class="e-corazon a"><use href="#corazon"></use></svg>
-    <svg class="e-corazon b"><use href="#corazon"></use></svg>
-    <span class="e-corazon c corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-  </div>
-  <div class="esquina esquina-br" aria-hidden="true">
-    <span class="e-corazon a corazon-roto"><svg class="mitad mitad-izq"><use href="#mitad-izq"></use></svg><svg class="mitad mitad-der"><use href="#mitad-der"></use></svg></span>
-    <svg class="e-corazon b"><use href="#corazon"></use></svg>
-    <svg class="e-corazon c"><use href="#corazon"></use></svg>
-  </div>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-texto">
+        <p class="kicker rise" style="--d:.1s">
+          <svg aria-hidden="true"><use href="#flor"></use></svg>
+          Catálogo exclusivo · solo romance
+        </p>
+        <h1>
+          <span class="rise" style="--d:.25s">Películas</span>
+          <span class="rise" style="--d:.4s">de <em>Romance</em></span>
+        </h1>
+        <p class="hero-script script rise" style="--d:.6s">cada historia, una flor que se abre</p>
+        <p class="hero-bajada rise" style="--d:.75s">Las más populares de TMDB, ordenadas de mayor a menor popularidad. Buscá por título, cargá 20 más cuando quieras y tocá cualquier póster para leer su resumen.</p>
 
-  <!-- Árbol de cerezo floreciendo a la izquierda -->
-  <div class="lado lado-izq" aria-hidden="true">
-    <svg class="arbol" viewBox="0 0 200 820" preserveAspectRatio="xMinYMax meet">
-      <path class="tronco" d="M28 815 C20 760 34 715 24 660 C16 610 30 570 26 520 C20 470 32 430 28 380 C24 330 34 300 30 250 C26 210 36 180 32 140 C29 110 36 95 34 70" fill="none" stroke="#6b4a3a" stroke-width="10" stroke-linecap="round"></path>
-      <path class="rama" d="M26 520 C70 505 105 485 145 460" fill="none" stroke="#6b4a3a" stroke-width="7" stroke-linecap="round"></path>
-      <path class="rama" d="M28 380 C75 368 115 345 160 320" fill="none" stroke="#6b4a3a" stroke-width="7" stroke-linecap="round"></path>
-      <path class="rama" d="M32 140 C68 130 100 112 138 95" fill="none" stroke="#6b4a3a" stroke-width="6" stroke-linecap="round"></path>
-      <path class="ramita" d="M34 70 C45 55 40 35 52 18" fill="none" stroke="#6b4a3a" stroke-width="4" stroke-linecap="round"></path>
-
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="133" y="428" width="34" height="34" style="animation-delay:0s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="153" y="445" width="30" height="30" style="animation-delay:.2s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-c" x="119" y="457" width="26" height="26" style="animation-delay:.4s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="144" y="469" width="22" height="22" style="animation-delay:.6s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="128" y="418" width="24" height="24" style="animation-delay:.8s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="152" y="289" width="32" height="32" style="animation-delay:1s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="171" y="306" width="28" height="28" style="animation-delay:1.2s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-c" x="137" y="322" width="26" height="26" style="animation-delay:1.4s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="161" y="329" width="22" height="22" style="animation-delay:1.6s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="148" y="280" width="20" height="20" style="animation-delay:1.8s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="130" y="70" width="30" height="30" style="animation-delay:2s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-c" x="115" y="87" width="26" height="26" style="animation-delay:2.2s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="127" y="59" width="22" height="22" style="animation-delay:2.4s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="108" y="80" width="20" height="20" style="animation-delay:2.6s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="47" y="0" width="22" height="22" style="animation-delay:2.8s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-c" x="31" y="16" width="18" height="18" style="animation-delay:3s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="57" y="22" width="16" height="16" style="animation-delay:3.2s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-c" x="21" y="586" width="18" height="18" style="animation-delay:3.4s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-a" x="18" y="427" width="16" height="16" style="animation-delay:3.6s"></use>
-      <use href="#flor-sakura" class="flor-crecer flor-b" x="28" y="187" width="16" height="16" style="animation-delay:3.8s"></use>
-    </svg>
-  </div>
-
-  <!-- Árbol de cerezo soltando pétalos a la derecha -->
-  <div class="lado lado-der" aria-hidden="true">
-    <svg class="arbol arbol-der" viewBox="0 0 200 820" preserveAspectRatio="xMinYMax meet">
-      <path class="tronco" d="M28 815 C20 760 34 715 24 660 C16 610 30 570 26 520 C20 470 32 430 28 380 C24 330 34 300 30 250 C26 210 36 180 32 140 C29 110 36 95 34 70" fill="none" stroke="#6b4a3a" stroke-width="10" stroke-linecap="round"></path>
-      <path class="rama" d="M26 520 C70 505 105 485 145 460" fill="none" stroke="#6b4a3a" stroke-width="7" stroke-linecap="round"></path>
-      <path class="rama" d="M28 380 C75 368 115 345 160 320" fill="none" stroke="#6b4a3a" stroke-width="7" stroke-linecap="round"></path>
-      <path class="rama" d="M32 140 C68 130 100 112 138 95" fill="none" stroke="#6b4a3a" stroke-width="6" stroke-linecap="round"></path>
-      <path class="ramita" d="M34 70 C45 55 40 35 52 18" fill="none" stroke="#6b4a3a" stroke-width="4" stroke-linecap="round"></path>
-
-      <use href="#flor-sakura" class="flor-quieta flor-a" x="133" y="428" width="30" height="30" style="animation-delay:0s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-c" x="119" y="457" width="22" height="22" style="animation-delay:.5s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-b" x="152" y="289" width="26" height="26" style="animation-delay:1s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-a" x="161" y="329" width="18" height="18" style="animation-delay:1.5s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-a" x="130" y="70" width="24" height="24" style="animation-delay:2s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-c" x="108" y="80" width="16" height="16" style="animation-delay:2.5s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-b" x="47" y="0" width="18" height="18" style="animation-delay:3s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-a" x="21" y="586" width="14" height="14" style="animation-delay:1.2s"></use>
-      <use href="#flor-sakura" class="flor-quieta flor-b" x="28" y="187" width="14" height="14" style="animation-delay:2.2s"></use>
-
-      <use href="#petalo" class="petalo-cae-arbol pa-a" x="150" y="420" width="18" height="17" style="animation-delay:0s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-b" x="168" y="440" width="14" height="13" style="animation-delay:.9s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-c" x="132" y="450" width="20" height="19" style="animation-delay:1.8s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-a" x="168" y="290" width="16" height="15" style="animation-delay:2.6s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-b" x="185" y="305" width="14" height="13" style="animation-delay:3.4s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-c" x="150" y="315" width="18" height="17" style="animation-delay:4.2s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-a" x="145" y="70" width="16" height="15" style="animation-delay:5s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-b" x="128" y="85" width="14" height="13" style="animation-delay:5.8s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-c" x="138" y="55" width="18" height="17" style="animation-delay:6.6s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-a" x="58" y="-5" width="14" height="13" style="animation-delay:7.4s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-b" x="40" y="10" width="12" height="11" style="animation-delay:8.2s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-c" x="30" y="580" width="16" height="15" style="animation-delay:3.9s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-a" x="26" y="420" width="14" height="13" style="animation-delay:6.1s"></use>
-      <use href="#petalo" class="petalo-cae-arbol pa-b" x="36" y="180" width="15" height="14" style="animation-delay:1.5s"></use>
-    </svg>
-  </div>
-
-  <main class="main">
-    <section class="view">
-      <div class="view-heading">
-        <h1>Películas de Romance</h1>
-        <p class="view-subtitle">Toca una para ver el resumen.</p>
+        <div class="buscador rise" style="--d:.9s">
+          <label for="search-input">Buscar por título</label>
+          <div class="search-bar">
+            <svg class="lupa" aria-hidden="true"><use href="#lupa"></use></svg>
+            <input id="search-input" type="search" placeholder="Ej.: Titanic, Orgullo y prejuicio…" autocomplete="off" />
+          </div>
+          <p class="ayuda">La búsqueda filtra al instante entre las <strong id="search-count">0</strong> películas ya cargadas.</p>
+        </div>
       </div>
 
-      <div class="search-bar">
-        <svg class="search-icon" aria-hidden="true"><use href="#lupa"></use></svg>
-        <input id="search-input" type="search" placeholder="Buscar por título..." aria-label="Buscar película" />
+      <!-- Árbol de cerezo: lo arma sakura.js -->
+      <div class="tree-stage" aria-hidden="true">
+        <div id="tree" class="tree">
+          <div class="moon"></div>
+          <div class="ground"></div>
+          <div class="flare"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUÉ PODÉS HACER -->
+    <section class="funciones">
+      <div class="titulo-linea">
+        <h2>Todo lo que podés hacer</h2>
+        <span aria-hidden="true"></span>
+      </div>
+      <div class="funciones-grid">
+        <article class="feat rise" style="--d:1s">
+          <div class="feat-ico"><svg aria-hidden="true"><use href="#lupa"></use></svg></div>
+          <h3>Buscar por título</h3>
+          <p>Escribí y la grilla se filtra al instante, sin recargar. Busca entre las películas que ya cargaste.</p>
+        </article>
+        <article class="feat rise" style="--d:1.1s">
+          <div class="feat-ico"><svg aria-hidden="true"><use href="#mas"></use></svg></div>
+          <h3>Cargar 20 más</h3>
+          <p>TMDB entrega 20 películas por página. Cada clic en «Cargar más» suma la página siguiente a la grilla.</p>
+        </article>
+        <article class="feat rise" style="--d:1.2s">
+          <div class="feat-ico"><svg aria-hidden="true"><use href="#ficha"></use></svg></div>
+          <h3>Ver el resumen</h3>
+          <p>Tocá un póster: se abre el detalle con año, puntuación ★ y una sinopsis corta.</p>
+        </article>
+        <article class="feat rise" style="--d:1.3s">
+          <div class="feat-ico"><svg aria-hidden="true"><use href="#reloj"></use></svg></div>
+          <h3>Siempre sabés qué pasa</h3>
+          <p>Aviso mientras carga y un mensaje claro si la API falla o si tu búsqueda no encuentra nada.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="catalogo">
+      <div class="catalogo-head">
+        <div>
+          <h2>El jardín de <em>historias</em></h2>
+          <p>Ordenadas por popularidad · tocá una para ver el resumen</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Mostrando <strong id="shown-count">0</strong> de <span id="loaded-count">0</span></span>
+          <span class="chip chip-suave" id="page-info">Página 1 · 20 por página</span>
+        </div>
       </div>
 
       <div id="status-area" class="status-area"></div>
 
       <div id="results-grid" class="grid"></div>
 
-      <button id="load-more" class="load-more" hidden>Cargar más</button>
+      <div class="mas-zona">
+        <button id="load-more" class="load-more" type="button" hidden>
+          <span class="ring" aria-hidden="true"></span>
+          <svg class="load-more-flor" aria-hidden="true"><use href="#flor"></use></svg>
+          <span id="load-more-label">Cargar 20 más</span>
+        </button>
+        <div id="fin" class="fin" hidden>
+          <p class="script">Recorriste todo el jardín</p>
+          <p>No hay más páginas para cargar.</p>
+        </div>
+      </div>
     </section>
   </main>
 
+  <footer class="footer">
+    <p>Proyecto universitario — Datos provistos por <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a>. Este producto usa la API de TMDB pero no está avalado ni certificado por TMDB.</p>
+    <p class="script footer-firma">El arte de amar</p>
+  </footer>
+
   <div id="modal-overlay" class="modal-overlay" hidden>
-    <div class="modal">
-      <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Resumen de la película">
+      <div id="modal-burst" class="burst" aria-hidden="true"></div>
+      <button id="modal-close" class="modal-close" type="button" aria-label="Cerrar resumen">
+        <svg aria-hidden="true"><use href="#cerrar"></use></svg>
+      </button>
       <div id="modal-content" class="modal-content"></div>
     </div>
   </div>
 
-  <footer class="footer">
-    <p>Proyecto universitario — Datos provistos por <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a>. Este producto usa la API de TMDB pero no está avalado ni certificado por TMDB.</p>
-  </footer>
-
+  <script type="module" src="sakura.js"></script>
   <script type="module" src="script.js"></script>
 </body>
 </html>
