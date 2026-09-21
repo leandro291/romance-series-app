@@ -42,6 +42,8 @@ romance-series-app/
 ├── style.css     # estilos (tema romance, responsive)
 ├── api.js        # consumos a la API de TMDB (fetch al catálogo, config hardcodeada)
 ├── script.js     # lógica de la interfaz: render, favoritos, eventos
+├── sakura.js     # decoración: árbol de cerezo animado, pétalos y corazones
+├── design/       # modelo de diseño (canvas) usado para la refactorización
 └── README.md
 ```
 
